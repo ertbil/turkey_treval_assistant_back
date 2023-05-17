@@ -1,4 +1,4 @@
-package com.example.treavelAppback.strings;
+package com.example.treavelAppback.consts.strings;
 
 public class ErrorInfo {
 
@@ -6,6 +6,10 @@ public class ErrorInfo {
 
     public  static String placeDoesNotExist(String s) {
         return "place with id " + s + " does not exist";
+
+    }
+    public static String userDoesNotExist(String s) {
+        return "user with id " + s + " does not exist";
 
     }
 }

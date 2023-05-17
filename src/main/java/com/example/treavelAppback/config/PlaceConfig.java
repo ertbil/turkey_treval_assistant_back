@@ -34,7 +34,7 @@ public class PlaceConfig {
                     "Camii",
                     "Tarih Turizmi",
                     "Sultan Ahmet Camii, İstanbul'un Fatih ilçesinde bulunan ve 1609 yılında inşa edilen camidir. İstanbul'un en önemli camilerinden biridir. İstanbul'un simgesi ve kültürel mirasıdır.",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ayasofya_Moschee_Istanbul_2013-08-18_02.jpg/1200px-Ayasofya_Moschee_Istanbul_2013-08-18_02.jpg",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Exterior_of_Sultan_Ahmed_I_Mosque_in_Istanbul%2C_Turkey_002.jpg/405px-Exterior_of_Sultan_Ahmed_I_Mosque_in_Istanbul%2C_Turkey_002.jpg",
                     "Adres: Sultanahmet Mahallesi, Sultanahmet Camii Caddesi, 34122 Fatih/İstanbul",
                     "T1 tramvayı ile Sultanahmet'e ulaşabilirsiniz.");
 

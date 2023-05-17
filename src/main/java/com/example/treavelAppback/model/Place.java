@@ -64,6 +64,17 @@ public class Place {
         this.directions = directions;
     }
 
+    public void update(Place place) {
+        this.name = place.name;
+        this.city = place.city;
+        this.type = place.type;
+        this.tourismType = place.tourismType;
+        this.description = place.description;
+        this.imageURL = place.imageURL;
+        this.address = place.address;
+        this.directions = place.directions;
+    }
+
     public Long getId() {
         return id;
     }

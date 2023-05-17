@@ -8,9 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+
+/***
+ burada yazılan interface JPA repository interface'inin yetmediği özel sorguları gerçekleştirmek için vardır.
+
+
+ ***/
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     @Query("SELECT p FROM Place p WHERE p.name = ?1")
     Optional<Place> findPlaceByName(String name);
+
+
 }

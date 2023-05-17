@@ -2,6 +2,7 @@ package com.example.treavelAppback.service;
 
 import com.example.treavelAppback.model.Place;
 import com.example.treavelAppback.repository.PlaceRepository;
+import com.example.treavelAppback.strings.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +28,11 @@ public class PlaceService {
 
                 .ifPresentOrElse(
                         (s) -> {
-                            throw new IllegalStateException("id taken");
+                            throw new IllegalStateException(ErrorInfo.idTaken);
 
 
                         }, // if present
-                        () -> {
-                            placeRepository.save(place);
-
-                        }
+                        () -> placeRepository.save(place)
                 );
         return true;
     }
@@ -42,7 +40,7 @@ public class PlaceService {
     public boolean deletePlace(Long placeId) {
         boolean exists = placeRepository.existsById(placeId);
         if (!exists) {
-            throw new IllegalStateException("place with id " + placeId + " does not exist");
+            throw new IllegalStateException(ErrorInfo.placeDoesNotExist(placeId.toString()));
         }
         placeRepository.deleteById(placeId);
         return true;
@@ -53,25 +51,18 @@ public class PlaceService {
         boolean exists = placeRepository.existsById(placeId);
 
         if (!exists) {
-            throw new IllegalStateException("place with id " + placeId + " does not exist");
+            throw new IllegalStateException(ErrorInfo.placeDoesNotExist(placeId.toString()));
 
         }
         placeRepository.findById(placeId)
                 .ifPresentOrElse(
-                        (place) -> {
-                            place.setName(updatedPlace.getName());
-                            place.setCity(updatedPlace.getCity());
-                            place.setAddress(updatedPlace.getAddress());
-                            place.setType(updatedPlace.getType());
-                            place.setName(updatedPlace.getName());
-                            place.setTourismType(updatedPlace.getTourismType());
-                            place.setDescription(updatedPlace.getDescription());
-                            place.setImageURL(updatedPlace.getImageURL());
-                            place.setDirections(updatedPlace.getDirections());
+                        (Place place) -> {
+                           place.update(updatedPlace);
+                            placeRepository.save(place);
 
                         },
                         () -> {
-                            throw new IllegalStateException("place with id " + placeId + " does not exist");
+                            throw new IllegalStateException(ErrorInfo.placeDoesNotExist(placeId.toString()));
                         }
                 );
 
@@ -83,7 +74,7 @@ public class PlaceService {
     public Optional<Place> getPlaceById(Long placeId) {
         boolean exists = placeRepository.existsById(placeId);
         if (!exists) {
-            throw new IllegalStateException("place with id " + placeId + " does not exist");
+            throw new IllegalStateException(ErrorInfo.placeDoesNotExist(placeId.toString()));
         }
         return placeRepository.findById(placeId);
 

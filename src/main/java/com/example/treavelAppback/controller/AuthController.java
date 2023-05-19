@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping(Paths.authenticatePath)
     public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequest authenticationRequest) {
         return ResponseEntity.ok(service.authenticate(authenticationRequest));
-        //TODO register
+
     }
 
 }

@@ -1,7 +1,7 @@
 package com.example.treavelAppback.config;
 
 
-import com.example.treavelAppback.model.Place;
+import com.example.treavelAppback.model.db_models.Place;
 import com.example.treavelAppback.repository.PlaceRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

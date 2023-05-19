@@ -1,7 +1,7 @@
 package com.example.treavelAppback.repository;
 
 
-import com.example.treavelAppback.model.Place;
+import com.example.treavelAppback.model.db_models.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

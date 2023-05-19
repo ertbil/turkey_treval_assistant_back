@@ -1,6 +1,6 @@
 package com.example.treavelAppback.service;
 
-import com.example.treavelAppback.model.Place;
+import com.example.treavelAppback.model.db_models.Place;
 import com.example.treavelAppback.repository.PlaceRepository;
 import com.example.treavelAppback.consts.strings.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;

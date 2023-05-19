@@ -1,4 +1,4 @@
-package com.example.treavelAppback.model;
+package com.example.treavelAppback.model.db_models;
 
 import jakarta.persistence.*;
 

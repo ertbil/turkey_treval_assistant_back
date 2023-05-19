@@ -1,4 +1,4 @@
-package com.example.treavelAppback.model;
+package com.example.treavelAppback.model.response_models;
 
 public class ResponseDto<T>{
     private boolean success;

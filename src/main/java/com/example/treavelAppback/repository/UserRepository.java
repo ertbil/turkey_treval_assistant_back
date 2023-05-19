@@ -1,6 +1,6 @@
 package com.example.treavelAppback.repository;
 
-import com.example.treavelAppback.model.User;
+import com.example.treavelAppback.model.db_models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

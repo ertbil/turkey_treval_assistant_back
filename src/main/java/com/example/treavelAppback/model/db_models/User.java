@@ -1,4 +1,4 @@
-package com.example.treavelAppback.model;
+package com.example.treavelAppback.model.db_models;
 
 
 import com.example.treavelAppback.consts.enums.Role;
@@ -14,12 +14,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
-@Table
+
+
+/**
+ * The error you are encountering is related to the creation of the "user" table in Hibernate.
+ * It seems that "user" is a reserved keyword in most databases,
+ * and therefore, you cannot use it directly as a table name.*/
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table (name = "users")
 public class User implements UserDetails {
 
     @Id

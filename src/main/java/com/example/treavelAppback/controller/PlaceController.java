@@ -1,7 +1,7 @@
 package com.example.treavelAppback.controller;
 
-import com.example.treavelAppback.model.Place;
-import com.example.treavelAppback.model.ResponseDto;
+import com.example.treavelAppback.model.db_models.Place;
+import com.example.treavelAppback.model.response_models.ResponseDto;
 import com.example.treavelAppback.service.PlaceService;
 import com.example.treavelAppback.consts.strings.PathVariables;
 import com.example.treavelAppback.consts.strings.Paths;

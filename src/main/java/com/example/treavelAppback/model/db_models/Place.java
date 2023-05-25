@@ -1,9 +1,13 @@
 package com.example.treavelAppback.model.db_models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
+@Getter
+@Setter
 public class Place {
 
     @Id
@@ -65,6 +69,9 @@ public class Place {
     }
 
     public void update(Place place) {
+
+        //TODO object. assign araştır
+        //TODO sadece isim değişimi olsa ne olacak
         this.name = place.name;
         this.city = place.city;
         this.type = place.type;
@@ -75,75 +82,5 @@ public class Place {
         this.directions = place.directions;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getTourismType() {
-        return tourismType;
-    }
-
-    public void setTourismType(String tourismType) {
-        this.tourismType = tourismType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDirections() {
-        return directions;
-    }
-
-    public void setDirections(String directions) {
-        this.directions = directions;
-    }
 }

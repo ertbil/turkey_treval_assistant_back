@@ -1,16 +1,24 @@
 package com.example.treavelAppback.model.response_models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class AuthenticationResponse { //TODO integrate with ResponseDTO
+public class AuthenticationResponse<T> extends ResponseDao<T> { //TODO integrate with ResponseDTO
 
     private String jwt;
+
+    public AuthenticationResponse(boolean success, T data, String error) {
+        super(success, data, error);
+    }
+
+    public AuthenticationResponse(T data) {
+        super(data);
+    }
+
+    public AuthenticationResponse(String error) {
+        super(error);
+    }
 }

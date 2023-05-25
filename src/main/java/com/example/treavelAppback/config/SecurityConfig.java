@@ -2,6 +2,7 @@ package com.example.treavelAppback.config;
 
 
 import com.example.treavelAppback.consts.strings.Paths;
+import com.example.treavelAppback.filters.JWTAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,17 +18,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+
     private final JWTAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf()
+                .disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        Paths.authPath + "/**",
-                        Paths.placesPath + "/**"
-                ) //whitelist
+                        Paths.whiteListedRoutes
+
+                )
                 .permitAll()
                 .anyRequest()
                 .authenticated()

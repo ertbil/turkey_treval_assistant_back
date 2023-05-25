@@ -1,8 +1,13 @@
 package com.example.treavelAppback.config;
 
 
+import com.example.treavelAppback.consts.enums.Role;
 import com.example.treavelAppback.model.db_models.Place;
+import com.example.treavelAppback.model.db_models.User;
+import com.example.treavelAppback.model.request_models.RegisterRequest;
 import com.example.treavelAppback.repository.PlaceRepository;
+import com.example.treavelAppback.repository.UserRepository;
+import com.example.treavelAppback.service.AuthService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +17,7 @@ import java.util.List;
 @Configuration
 public class PlaceConfig {
     @Bean
-    CommandLineRunner commandLineRunner(PlaceRepository repository) {
+    CommandLineRunner commandLineRunner(PlaceRepository repository, UserRepository userRepository, AuthService authService) {
         return args -> {
 
             Place hagiaSophia = new Place(
@@ -41,6 +46,24 @@ public class PlaceConfig {
             repository.saveAll(
                     List.of(hagiaSophia, blueMosque)
             );
+
+
+            RegisterRequest user = new RegisterRequest(
+
+                    "admin",
+                    "admin",
+                    "admin",
+                    "admin",
+                    "mail@gmail.com"
+
+
+
+                   );
+
+            System.out.println("user Token: " + authService.register(user).getJwt());
+
+
+
 
 
         };

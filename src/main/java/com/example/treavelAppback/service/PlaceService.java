@@ -1,8 +1,8 @@
 package com.example.treavelAppback.service;
 
+import com.example.treavelAppback.consts.strings.ErrorInfo;
 import com.example.treavelAppback.model.db_models.Place;
 import com.example.treavelAppback.repository.PlaceRepository;
-import com.example.treavelAppback.consts.strings.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +57,7 @@ public class PlaceService {
         placeRepository.findById(placeId)
                 .ifPresentOrElse(
                         (Place place) -> {
-                           place.update(updatedPlace);
+                            place.update(updatedPlace);
                             placeRepository.save(place);
 
                         },

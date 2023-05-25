@@ -1,6 +1,7 @@
 package com.example.treavelAppback.service;
 
 
+import com.example.treavelAppback.consts.strings.SecretKey;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,16 +16,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static com.example.treavelAppback.consts.strings.SecretKey.secretKey;
+
 
 @Service
 public class JWTService {
 
 
-    public String extractUserEmail(String token){
-
+    public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
     }
+
 
     public<T> T extractClaim(String token, Function<Claims,T> claimsResolver){
         final Claims claims = extractAllClaims(token);
@@ -33,9 +34,11 @@ public class JWTService {
 
 
     public String generateToken(UserDetails userDetail) {
+        System.out.println("generate token");
         return generateToken(new HashMap<>(), userDetail);
     }
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails){
+        System.out.println("jwt builder starts");
         return Jwts.builder().setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
@@ -45,8 +48,8 @@ public class JWTService {
     }
 
     public boolean isTokenValid( String token, UserDetails userDetails){
-        final String userEmail = extractUserEmail(token);
-        return (userEmail.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     private boolean isTokenExpired(String token) {
@@ -63,7 +66,8 @@ public class JWTService {
     }
 
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        System.out.println("get signing key");
+        byte[] keyBytes = Decoders.BASE64.decode(SecretKey.secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

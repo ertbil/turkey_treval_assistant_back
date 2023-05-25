@@ -4,6 +4,7 @@ package com.example.treavelAppback.service;
 import com.example.treavelAppback.consts.enums.Role;
 import com.example.treavelAppback.model.db_models.User;
 import com.example.treavelAppback.model.request_models.AuthenticationRequest;
+import com.example.treavelAppback.model.request_models.RegisterRequest;
 import com.example.treavelAppback.model.response_models.AuthenticationResponse;
 import com.example.treavelAppback.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,9 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(User requestUser) { //TODO it can be better
+    public AuthenticationResponse register(RegisterRequest requestUser) {//TODO it can be better
+
+        System.out.println("builder starts");
         User user = User.builder()
                 .firstName(requestUser.getFirstName())
                 .lastName(requestUser.getLastName())
@@ -32,7 +35,14 @@ public class AuthService {
                 .email(requestUser.getEmail())
                 .build();
 
+        System.out.println("builder ends");
+
+
         userRepository.save(user);
+
+        System.out.println("user saved");
+
+
         return buildResponse(user);
     }
 
@@ -49,7 +59,9 @@ public class AuthService {
     }
 
     private AuthenticationResponse buildResponse(User user) {
+        System.out.println("buildResponse starts");
         var jwt = jwtService.generateToken(user);
+
         return AuthenticationResponse.builder()
                 .jwt(jwt)
                 .build();

@@ -1,24 +1,24 @@
 package com.example.treavelAppback.model.response_models;
 
-public class ResponseDto<T>{
+public class ResponseDao<T>{
     private boolean success;
     private T data;
     private String error;
 
-    public ResponseDto(boolean success, T data, String error) {
+    public ResponseDao(boolean success, T data, String error) {
         this.success = success;
         this.data = data;
         this.error = error;
     }
 
-    public ResponseDto( T data) { // burada t string gelirse hata gelir ama json veri gönderiyoruz bundan değişmesine gerek yok gibi
+    public ResponseDao(T data) { // burada t string gelirse hata gelir ama json veri gönderiyoruz bundan değişmesine gerek yok gibi
         //olur da patlarsa sınıfın altındaki gibi yap
         this.success = true;
         error = null;
         this.data = data;
     }
 
-    public ResponseDto( String error) {
+    public ResponseDao(String error) {
         this.success = false;
         this.error = error;
         data = null;

@@ -40,9 +40,6 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private boolean locked = false;
-    private boolean enabled = false;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -83,7 +80,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     /**
@@ -100,6 +97,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
     }
 }
